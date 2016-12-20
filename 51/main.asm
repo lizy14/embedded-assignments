@@ -7,22 +7,27 @@ ORG  0000H
     LJMP MAIN
 
 ORG 0003H
+    LJMP EXINT
+
+EXINT:  ; external interrupt handler
+    PUSH PSW
     CALL RESET
+    POP PSW
     RETI
 
-INIT:
+INIT:  ; enable external interrupt
     SETB EA
     SETB EX0
     CLR  IT0
     RET
 
-DRAW:
+DRAW:  ; display value of B
     MOV  A, B
     MOVC A, @A+DPTR
     MOV  P0, A
     RET
 
-RESET:
+RESET:  ; reset value of B
     MOV  B, #0
     CALL DRAW
     RET
@@ -40,7 +45,7 @@ LOOP_BEGIN:
 
     INC  B
     ANL  B, #15
-    call DELAY
+    CALL DELAY
 
     SJMP LOOP_BEGIN
 
