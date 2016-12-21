@@ -22,7 +22,7 @@ static int* leds;
 
 /*
     3 red
-2 red    4 blue
+2 orange 4 blue
    1 green
 */
 
