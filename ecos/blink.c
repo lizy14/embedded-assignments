@@ -2,7 +2,7 @@
 #include <cyg/hal/hal_io.h>
 #include <cyg/hal/hal_intr.h>
 
-static int flag = 0;  // toggled by interrupt
+static int flag = 1;  // toggled by interrupt
 
 static int clockwise[] = {
     CYGHWR_HAL_STM32F4DISCOVERY_LED1,
